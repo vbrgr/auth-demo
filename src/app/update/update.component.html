@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Update Product</h2>
+    <div align="right"><button  class="btn btn-sm btn-success" (click)= "products()" >Products List</button></div>
+      <div class="alert alert-success" *ngIf="updateresult && updateresult.updateSuccess" >
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success! </strong>{{ updateresult.updateSuccess }}</div>
+      <div class="alert alert-danger" *ngIf="updateresult && updateresult.insertFail" >
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Error!</strong>{{ updateresult.updateFail }}</div>
+    <form #f="ngForm"  (ngSubmit) ="updateData({'id':pid.value,'name':pname.value,'cost':cost.value})">
+      <div class="form-group"><label for="pid">Id</label>
+        <input type="number" name="pid" [(ngModel)] = "result[0]['id']"  #pid = "ngModel"  class="form-control">
+      </div>
+      <div class="form-group"><label for="pname">Name</label>
+        <input type="text" name="pname" [(ngModel)] = "result[0]['name']"  #pname = "ngModel"  class="form-control">
+      </div>
+      <div class="form-group"><label for="cost">Cost</label>
+        <input type="number" name="cost" [(ngModel)] = "result[0]['cost']"  #cost= "ngModel"   class="form-control">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-small">Submit</button>
+      </div>
+    </form>
+  </div>
+

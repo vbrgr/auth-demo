@@ -1,0 +1,24 @@
+<div class="container">
+  <h2 class="panel-heading">Products</h2>
+  <div align="right"><button class="btn btn-sm btn-success" [routerLink] = "['/add-product']" >Add Product</button></div>
+  <div class="alert alert-success" *ngIf="delresult && delresult.deleteSuccess" >
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong>{{ delresult.deleteSuccess }}</div>
+  <div class="alert alert-danger" *ngIf="delresult && delresult.deleteFail" >
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error!</strong>{{ delresult.deleteFail }}</div>
+  <table class="table table-bordered table-hover" >
+  <tr>
+      <th>Id</th>
+    <th>Name</th>
+    <th>Cost</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let res of result" >
+      <td *ngIf="res.id">{{ res.id }}</td>
+    <td *ngIf="res.name">{{ res.name }}</td>
+    <td *ngIf="res.cost">{{ res.cost }}</td>
+    <td *ngIf="res.id"><button [routerLink] = "['/update', res._id]" class="btn btn-sm btn-peimary">Edit</button> &nbsp;  <button (click) = "deleteProduct(res._id)" class="btn btn-sm btn-peimary">Delete</button></td>
+  </tr>
+</table>
+</div>
