@@ -1,6 +1,5 @@
-
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,6 +31,7 @@ const appRoutes: Routes = [
   { path: 'update/:id', component: UpdateComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'custom-element', component: CustomElementComponent },
   { path: 'no-acess', component: NoAccessComponent },
   { path: '**', component: NotFoundComponent }
   ];
@@ -68,6 +68,6 @@ const appRoutes: Routes = [
 
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AlertComponent],
+  entryComponents: [AlertComponent]
 })
 export class AppModule { }
