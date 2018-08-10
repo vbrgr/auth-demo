@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="card card-container">
+      <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+      <p id="profile-name" class="profile-name-card"></p>
+      <form class="form-signin"  #f="ngForm" (ngSubmit)="signUp(f.value)">
+        <div *ngIf="invalidSignUp" class="alert alert-danger">Invalid username and/or password.</div>
+        <div class="alert alert-success" *ngIf="result && result.signupSuccess" >
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success! </strong>{{ result.signupSuccess }}</div>
+        <div class="form-group">
+        <label for="name" class="sr-only">Name</label>
+        <input type="text" id="name" name="name" [(ngModel)] = "dat.name"  #name = "ngModel"  class="form-control" placeholder="Name" required autofocus>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail" class="sr-only">Email address</label>
+          <input type="email" id="inputEmail" name="email" [(ngModel)] = "dat.email"  #email = "ngModel" class="form-control" placeholder="Email address" required >
+          </div>
+        <div class="form-group">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" name="password" [(ngModel)] = "dat.password"  #password = "ngModel" class="form-control" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign Up</button>
+        </div>
+      </form><!-- /form -->
+      <a [routerLink] = "['/login']" class="forgot-password">
+          Login ?
+      </a>
+  </div><!-- /card-container -->
+</div><!-- /container -->

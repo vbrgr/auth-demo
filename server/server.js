@@ -27,6 +27,10 @@ var remove = require("./delete/delete");
 app.use("/delete", remove);
 var auth = require("./auth/auth");
 app.use("/auth", auth);
+app.use("/login", auth);
+var signup = require("./signup/signup");
+app.use("/signup", signup);
+
 
 /* var mongodb = require("mongodb");
 var mongojs = require("mongojs");

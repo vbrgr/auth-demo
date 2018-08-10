@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -9,8 +9,6 @@ import { InsertProductComponent } from './insert-product/insert-product.componen
 import { MongoComponent } from './mongo/mongo.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { SignupComponent } from './signup/signup.component';
-import { NoAcessComponent } from './no-acess/no-acess.component';
 import { NoAccessComponent } from './no-access/no-access.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
@@ -23,6 +21,10 @@ import { UpdateService } from './services/update.service';
 import { HeaderComponent } from './header/header.component';
 import { CustomElementComponent } from './custom-element/custom-element.component';
 import { AlertComponent } from './alert/alert.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { SignUpService } from './services/sign-up.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,8 +33,9 @@ const appRoutes: Routes = [
   { path: 'update/:id', component: UpdateComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'sign-up', component: SignUpComponent },
   { path: 'custom-element', component: CustomElementComponent },
-  { path: 'no-acess', component: NoAccessComponent },
+  { path: 'no-access', component: NoAccessComponent },
   { path: '**', component: NotFoundComponent }
   ];
 
@@ -41,8 +44,6 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     NotFoundComponent,
-    SignupComponent,
-    NoAcessComponent,
     NoAccessComponent,
     AdminComponent,
     LoginComponent,
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     CustomElementComponent,
     AlertComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,10 @@ const appRoutes: Routes = [
   providers: [
     FetchService,
     InsertService,
-    UpdateService
+    UpdateService,
+    SignUpService,
+    AuthService,
+    AuthGuardService
 
   ],
   bootstrap: [AppComponent],
