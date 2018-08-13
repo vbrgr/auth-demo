@@ -8,6 +8,7 @@ router.post("/",function(req,res){
   var email = req.body.email;
   var password = req.body.password;
   var obj = {"name":name,"email":email,"password":password};
+  console.log(req);
   mongoClient.connect("mongodb://localhost:27017/products",function(err,db){
     db.collection("users").insertOne(obj,function(err,result) {
       if(err) {

@@ -2,7 +2,7 @@
   <div class="card card-container">
       <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
       <p id="profile-name" class="profile-name-card"></p>
-      <form class="form-signin"  #signForm="ngForm" (ngSubmit)="onSignUp(signForm.value)">
+      <form class="form-signin"   #signForm="ngForm" (ngSubmit)="onSignUp(signForm.value)">
         <div *ngIf="invalidSignUp" class="alert alert-danger">Invalid username and/or password.</div>
         <div class="alert alert-success" *ngIf="result && result.signupSuccess" >
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

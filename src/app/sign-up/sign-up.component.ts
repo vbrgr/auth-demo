@@ -20,8 +20,8 @@ export class SignUpComponent implements OnInit {
     private _signUpService: SignUpService) {
     }
 
-    public onSignUp(signupform) {
-    this._signUpService.signUp(JSON.stringify(signupform))
+    public onSignUp(obj) {
+    this._signUpService.signUpForm(obj)
       .subscribe(res => {
         if (res) {
           this.dat = [ {'name' : '', 'email' : '', 'password' : ''} ];
