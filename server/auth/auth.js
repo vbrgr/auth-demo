@@ -14,20 +14,5 @@ router.get("/", (req,res) => {
     });
   });
 });
-router.post("/",function(req,res){
-  var name = req.body.name;
-  var email = req.body.email;
-  var password = req.body.password;
-  var obj = {"name":name,"email":email,"password":password};
-  console.log(obj); 
-  mongoClient.connect(url, function(err,db){
-    db.collection("users").insertOne(obj,function(err,result) {
-      if(err) {
-        res.send({"insertFail":"Please try again"});
-      } else {
-        res.send({"insertSuccess":"SignUp success."});
-      }
-    });
-  });
-});
+
 module.exports = router;

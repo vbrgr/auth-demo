@@ -4,7 +4,6 @@ var router = express.Router();
 //create Client
 var mongoClient = mongodb.MongoClient;
 router.post("/",function(req,res){
-    console.log(req);
   var name = req.body.name;
   var email = req.body.email;
   var password = req.body.password;

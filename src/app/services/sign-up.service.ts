@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 export class SignUpService {
 
   constructor(private _http: Http) { }
-  signUp(formfeilds: any): any {
+  public signUp(formfeilds: any): any {
     return this._http.post('http://localhost:8080/signup/', formfeilds)
     .map((res: Response) => {
      return res.json();

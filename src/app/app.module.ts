@@ -25,6 +25,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { SignUpService } from './services/sign-up.service';
+import { TransferService } from './services/transfer.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -69,7 +70,8 @@ const appRoutes: Routes = [
     UpdateService,
     SignUpService,
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    TransferService
 
   ],
   bootstrap: [AppComponent],
