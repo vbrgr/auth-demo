@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy:firebase": "ng build --prod  && firebase deploy",
-    "deploy:gh": "ng build --prod --base-href='https://vbrgr.github.io/auth-demo/' && ngh --dir='dist/auth-demo'"
+    "deploy:gh": "ng build --prod --base-href='https://vbrgr.github.io/auth-demo/' && ngh"
   },
   "private": true,
   "dependencies": {
@@ -23,7 +23,6 @@
     "@angular/platform-browser": "^6.1.2",
     "@angular/platform-browser-dynamic": "^6.1.2",
     "@angular/router": "^6.1.2",
-    "@webcomponents/custom-elements": "^1.2.0",
     "angular-cli-ghpages": "^0.5.3",
     "angularfire2": "^5.0.0-rc.5-next",
     "body-parser": "^1.18.3",
