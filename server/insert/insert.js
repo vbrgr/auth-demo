@@ -9,7 +9,6 @@ router.post("/",function(req,res){
   var name = req.body.name;
   var cost = req.body.cost;
   var obj = {"id":id,"name":name,"cost":cost};
-  console.log(req);
   mongoClient.connect("mongodb://localhost:27017/products",function(err,db){
     db.collection("products").insertOne(obj,function(err,result) {
       if(err) {
