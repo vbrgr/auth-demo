@@ -4,7 +4,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TransferService } from '../services/transfer.service';
-
 @Component({
   selector: 'app-insert-product',
   templateUrl: './insert-product.component.html',
