@@ -1,5 +1,11 @@
 <div class="container">
   <h2 class="panel-heading">Products</h2>
+  <div class="alert alert-success" *ngIf="sucresult && sucresult.insertSuccess" >
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success! </strong>{{ sucresult.insertSuccess }}</div>
+<div class="alert alert-danger" *ngIf="sucresult && sucresult.insertFail" >
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error!</strong>{{ sucresult.insertFail }}</div>
   <div align="right"><button class="btn btn-sm btn-success" [routerLink] = "['/add-product']" >Add Product</button></div>
   <div class="alert alert-success" *ngIf="delresult && delresult.deleteSuccess" >
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

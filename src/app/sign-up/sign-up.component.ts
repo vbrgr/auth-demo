@@ -12,6 +12,7 @@ import { TransferService } from '../services/transfer.service';
 export class SignUpComponent implements OnInit {
   signForm;
   invalidSignUp: boolean;
+  submitted: boolean;
   public result: any;
   public dat: any = [ {'name' : '', 'email' : '', 'password' : ''} ];
   constructor(
@@ -21,6 +22,7 @@ export class SignUpComponent implements OnInit {
     }
 
     public onSignUp(obj) {
+      this.submitted = true;
     this._signUpService.signUpForm(obj)
       .subscribe(res => {
         if (res) {
@@ -34,6 +36,7 @@ export class SignUpComponent implements OnInit {
       });
   }
   ngOnInit() {
+    this.submitted = false;
     this.signForm = new FormGroup({
         name : new FormControl('', [
           Validators.required,

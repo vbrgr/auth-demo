@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { DeleteService } from '../services/delete.service';
+import { TransferService } from '../services/transfer.service';
 
 @Component({
   selector: 'app-mongo',
@@ -10,9 +11,15 @@ import { DeleteService } from '../services/delete.service';
   styleUrls: ['./mongo.component.css']
 })
 export class MongoComponent implements OnInit {
+    data = this.transferService.getData();
+    sucresult: any;
     public result: any;
     public delresult: any;
-    constructor(private _router: Router, private _service: FetchService, private _delservice: DeleteService) {
+    constructor(private _router: Router, private _service: FetchService, private _delservice: DeleteService,
+       private transferService: TransferService) {
+      if (this.data) {
+        this.sucresult = this.data;
+      }
     }
     ngOnInit() {
         this.getProductsData();

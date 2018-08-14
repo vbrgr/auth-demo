@@ -3,6 +3,7 @@ import { InsertService } from '../services/insert.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { TransferService } from '../services/transfer.service';
 
 @Component({
   selector: 'app-insert-product',
@@ -26,12 +27,14 @@ export class InsertProductComponent {
   });
   public result: any;
   public dat: any = [ {'id' : '', 'name' : '', 'cost' : ''} ];
-   constructor(private _router: Router, private _service: InsertService) {
+   constructor(private _router: Router, private _service: InsertService, private transferService: TransferService) {
   }
   public insertData(obj: any): any {
     this._service.insertProduct(obj).subscribe(res => {
       this.dat = [ {'id' : '', 'name' : '', 'cost' : ''} ];
       this.result = res;
+      this.transferService.setData(this.result);
+        this._router.navigateByUrl('/products');
     }, (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
           console.log('Server side Error !');
