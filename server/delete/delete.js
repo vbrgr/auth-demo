@@ -7,10 +7,11 @@ var mongodb = require("mongodb");
 var mongojs = require("mongojs");
 //create the MongoClient
 var mongoClient = mongodb.MongoClient;
+var url = "mongodb://localhost:27017/products";
 //create the Post Request
 router.delete("/",function(req,res){
     var p_id = req.query.id;
-    mongoClient.connect("mongodb://localhost:27017/products",
+    mongoClient.connect(url,
                             function(err,db){
         db.collection('products').remove({_id : mongojs.ObjectId(p_id)},
                         function(err,result){

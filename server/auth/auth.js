@@ -5,6 +5,7 @@ var router = express.Router();
 //create Client
 var mongoClient = mongodb.MongoClient;
 var url = "mongodb://localhost:27017/products";
+
 //creat rest API
 router.get("/", (req,res) => {
   var u_id = req.query.id
