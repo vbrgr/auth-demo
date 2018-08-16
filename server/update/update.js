@@ -4,7 +4,7 @@ var router = express.Router();
 //create Client
 var mongoClient = mongodb.MongoClient;
 //creat rest API
-router.post("/",function(req,res){
+router.put("/",function(req,res){
   var id = req.body.id;
   var name = req.body.name;
   var cost = req.body.cost;

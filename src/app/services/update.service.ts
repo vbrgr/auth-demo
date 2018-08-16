@@ -11,7 +11,7 @@ export class UpdateService {
   constructor(private _http: Http) {
   }
   public updateProduct(obj: any): any {
-    return this._http.post('http://localhost:8080/update/', obj)
+    return this._http.put('http://localhost:8080/update/', obj)
     .map((res: Response) => {
       return res.json();
     }).catch(this._handleError);
