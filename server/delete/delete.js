@@ -10,8 +10,8 @@ var mongoClient = mongodb.MongoClient;
 var url = "mongodb://localhost:27017/products";
 var uri = "mongodb+srv://vbrgr:gHy6Uh7Khjb01yJL@cluster0-j5bqr.mongodb.net/products";
 //create the Post Request
-router.delete("/",function(req,res){
-    var p_id = req.query.id;
+router.delete("/:id",function(req,res){
+    var p_id = req.params.id;
     mongoClient.connect(uri,function(err,client){
           var collection =  client.db("products").collection("products");
           collection.remove({_id : mongojs.ObjectId(p_id)},
