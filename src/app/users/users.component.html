@@ -1,0 +1,14 @@
+<div class="container">
+    <h2 class="panel-heading">Users</h2>
+    <table class="table table-bordered table-hover" >
+    <tr>
+        <th>Name</th>
+      <th>Email</th>
+    </tr>
+    <tr *ngFor="let res of result" >
+        <td *ngIf="res.name">{{ res.name }}</td>
+      <td *ngIf="res.email">{{ res.email }}</td>
+    </tr>
+  </table>
+  </div>
+  

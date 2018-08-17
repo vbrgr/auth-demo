@@ -28,6 +28,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { SignUpService } from './services/sign-up.service';
 import { TransferService } from './services/transfer.service';
+import { UsersComponent } from './users/users.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
   { path: 'update/:id', component: UpdateComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'users', component: UsersComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'custom-element', component: CustomElementComponent },
   { path: 'no-access', component: NoAccessComponent },
@@ -57,6 +59,7 @@ const appRoutes: Routes = [
     CustomElementComponent,
     AlertComponent,
     SignUpComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

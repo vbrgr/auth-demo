@@ -13,7 +13,13 @@ export class FetchService {
   constructor(private _http: Http) {
   }
   public getProducts(): any {
-    return this._http.get('http://192.168.1.37:8080/fetch')
+    return this._http.get('http://192.168.1.37:8080/fetch/products')
+    .map((res: Response) => {
+      return res.json();
+    }).catch(this._handleError);
+  }
+  public getUsers(): any {
+    return this._http.get('http://192.168.1.37:8080/fetch/users')
     .map((res: Response) => {
       return res.json();
     }).catch(this._handleError);
