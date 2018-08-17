@@ -3,6 +3,8 @@ import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Stitch, RemoteMongoClient, AnonymousCredential } from 'mongodb-stitch-browser-sdk';
+
 
 import { AppComponent } from './app.component';
 import { InsertProductComponent } from './insert-product/insert-product.component';

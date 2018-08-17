@@ -8,12 +8,13 @@ var mongojs = require("mongojs");
 //create the MongoClient
 var mongoClient = mongodb.MongoClient;
 var url = "mongodb://localhost:27017/products";
+var uri = "mongodb+srv://vbrgr:gHy6Uh7Khjb01yJL@cluster0-j5bqr.mongodb.net/products";
 //create the Post Request
 router.delete("/",function(req,res){
     var p_id = req.query.id;
-    mongoClient.connect(url,
-                            function(err,db){
-        db.collection('products').remove({_id : mongojs.ObjectId(p_id)},
+    mongoClient.connect(uri,function(err,client){
+          var collection =  client.db("products").collection("products");
+          collection.remove({_id : mongojs.ObjectId(p_id)},
                         function(err,result){
             if(err){
                 res.send({"deleteFail":"Please try again"});

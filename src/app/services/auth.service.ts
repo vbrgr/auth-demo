@@ -13,7 +13,7 @@ export class AuthService {
    }
    login(credentials) {
     const option = JSON.stringify(credentials);
-     return this._http.get('http://localhost:8080/login', option)
+     return this._http.get('http://192.168.1.37:8080/login', option)
      .map((res: Response) => {
       return res.json();
     }).catch(this._handleError);

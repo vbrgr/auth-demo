@@ -11,7 +11,7 @@ export class InsertService {
   constructor(private _http: Http) {
   }
   public insertProduct(obj: any): any {
-    return this._http.post('http://localhost:8080/insert/', obj)
+    return this._http.post('http://192.168.1.37:8080/insert/', obj)
     .map((res: Response) => {
       return res.json();
     }).catch(this._handleError);
