@@ -1,6 +1,13 @@
 var express = require("express");
+var mongoose = require('mongoose');
 var mongodb = require("mongodb");
 var router = express.Router();
+
+var userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+});
 //create Client
 var mongoClient = mongodb.MongoClient;
 var url = "mongodb://localhost:27017/products";
