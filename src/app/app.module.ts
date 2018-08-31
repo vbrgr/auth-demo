@@ -37,6 +37,7 @@ const appRoutes: Routes = [
   { path: 'update/:id', component: UpdateComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LoginComponent },
   { path: 'users', component: UsersComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'custom-element', component: CustomElementComponent },

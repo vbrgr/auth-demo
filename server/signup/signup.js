@@ -1,4 +1,5 @@
 var express = require("express");
+var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
 var mongodb = require("mongodb");
 var router = express.Router();
@@ -16,8 +17,8 @@ router.post("/",function(req,res){
   var name = req.body.name;
   var email = req.body.email;
   var password = req.body.password;
-  var obj = {"name":name,"email":email,"password":password};
-  mongoClient.connect(uri,function(err,client){
+  var obj = {"name":name,"email":email,"password":password,"islogin":false,"token":""};
+  mongoClient.connect(url,function(err,client){
     var collection = client.db("products").collection("users");
     client.close(collection.insertOne(obj,function(err,result) {
       if(err) {

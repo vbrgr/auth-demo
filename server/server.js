@@ -31,6 +31,8 @@ app.use("/login", auth);
 var signup = require("./signup/signup");
 app.use("/signup", signup);
 
+var fetchuser = require("./fetch/fetch-users");
+app.use("/fetch-users", fetchuser);
 
 /* var mongodb = require("mongodb");
 var mongojs = require("mongojs");
