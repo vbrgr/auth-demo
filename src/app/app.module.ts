@@ -30,6 +30,7 @@ import { SignUpService } from './services/sign-up.service';
 import { TransferService } from './services/transfer.service';
 import { UsersComponent } from './users/users.component';
 
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'add-product', component: InsertProductComponent },
@@ -78,7 +79,6 @@ const appRoutes: Routes = [
     AuthService,
     AuthGuardService,
     TransferService
-
   ],
   bootstrap: [AppComponent],
   entryComponents: [AlertComponent]

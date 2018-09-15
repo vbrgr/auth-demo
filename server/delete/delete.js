@@ -12,7 +12,7 @@ var uri = "mongodb+srv://vbrgr:gHy6Uh7Khjb01yJL@cluster0-j5bqr.mongodb.net/produ
 //create the Post Request
 router.delete("/:id",function(req,res){
     var p_id = req.params.id;
-    mongoClient.connect(uri,function(err,client){
+    mongoClient.connect(url,function(err,client){
           var collection =  client.db("products").collection("products");
           collection.remove({_id : mongojs.ObjectId(p_id)},
                         function(err,result){

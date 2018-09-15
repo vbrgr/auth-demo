@@ -30,7 +30,8 @@ router.get("/:email/:password", (req,res) => {
     exp: parseInt(expiry.getTime() / 1000),
   }, "PRIVATE_KEY"); // DO NOT KEEP YOUR SECRET IN THE CODE!
   generateJwt = function() {
-  
+    return this._http.post('http://192.168.1.37:4200/session/', body)
+    .subscribe((token) => console.log(token));
   return token;
 };
   var tim = new Date();

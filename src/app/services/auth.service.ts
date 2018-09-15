@@ -1,5 +1,4 @@
 import { Http, Response } from '@angular/http';
-import { JwtHelper } from 'angular2-jwt';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
@@ -13,65 +12,44 @@ export class AuthService {
 private token: string;
   constructor(private _http: Http, private router: Router) {
    }
-   public login(credentials) {
+    login(credentials) {
      const email = credentials['email'];
      const password = credentials['password'];
      return this._http.get('http://192.168.1.37:8080/login/' + email + '/' + password)
      .map((res: Response) => {
-       if (res['token']) {
-        this.saveToken(res['token']);
-      }
       return res.json();
     }).catch(this._handleError);
   }
 
-   public signUp(formfeilds: any): any {
+    signUp(formfeilds: any): any {
     return this._http.post('http://192.168.1.37:8080/signup/', formfeilds)
     .map((res: Response) => {
      return res.json();
    }).catch(this._handleError);
    }
-   public getUserDetails(): UserDetails {
-    const token = this.getToken();
-    let payload;
-    if (token) {
-      payload = token.split('.')[1];
-      payload = window.atob(payload);
-      return JSON.parse(payload);
-    } else {
-      return null;
-    }
-  }
-  public isLoggedIn(): boolean {
-/*     const jwtHelper = new JwtHelper();
-    const token = localStorage.getItem('mean-token');
-    const expirationDate = jwtHelper.getTokenExpirationDate(token);
-    const isExpired = jwtHelper.isTokenExpired(token);
+    getUserDetails() {
 
-    console.log('Expiration', expirationDate);
-    console.log('isExpired', isExpired); */
+  }
+  isLoggedIn(): boolean {
     const user = this.getUserDetails();
-    if (user) {
-      return user.exp > Date.now() / 1000;
-    } else {
-      return false;
-    }
-  }
-   private saveToken(token: string): void {
-    localStorage.setItem('mean-token', token);
-    this.token = token;
+    console.log(user);
+    return true;
   }
 
-  private getToken(): string {
-    if (!this.token) {
-      this.token = localStorage.getItem('mean-token');
-    }
+  currentUser(): any {
+  }
+   saveToken(token: string): any {
+    const body =  { 'token': token };
+    // this.token = token;
+  }
+
+   getToken(): string {
     return this.token;
   }
 
-  public logout(): void {
+   logout(): void {
     this.token = '';
-    window.localStorage.removeItem('mean-token');
+    // window.localStorage.removeItem('mean-token');
     this.router.navigateByUrl('/');
   }
 
