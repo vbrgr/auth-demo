@@ -9,7 +9,7 @@
           <strong>Success! </strong>{{ result.signupSuccess }}</div>
         <div class="form-group">
         <label for="name" class="sr-only">Name</label>
-        <input type="text" id="name" name="name" [(ngModel)] = "dat.name"  #name = "ngModel"  
+        <input type="text" id="name" name="name" [(ngModel)] = "dat.name"  #name = "ngModel"
           class="form-control" placeholder="Name" required autofocus [ngClass]="{ 'is-invalid': submitted && name.invalid && (name.dirty || name.touched) }">
           <div *ngIf="name.invalid && (name.dirty || name.touched)"
           class="alert alert-danger">
@@ -27,7 +27,7 @@
         <div class="form-group">
           <label for="inputEmail" class="sr-only">Email address</label>
           <input type="email" id="inputEmail" name="email" [(ngModel)] = "dat.email"  #email = "ngModel" class="form-control" placeholder="Email address" required >
-          <div *ngIf="submitted && email.invalid && (email.dirty || email.touched)"
+          <div *ngIf="email.invalid && (email.dirty || email.touched)"
           class="alert alert-danger">
             <div *ngIf="email.errors['required']">
               Email is required.
@@ -42,9 +42,9 @@
         </div>
         <div class="form-group">
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="password" [(ngModel)] = "dat.password" 
+        <input type="password" id="inputPassword" name="password" [(ngModel)] = "dat.password"
          #password = "ngModel" class="form-control" placeholder="Password" required>
-        <div *ngIf="submitted && password.invalid && (password.dirty || password.touched)"
+        <div *ngIf="password.invalid && (password.dirty || password.touched)"
         class="alert alert-danger">
           <div *ngIf="password.errors['required']">
             Password is required.

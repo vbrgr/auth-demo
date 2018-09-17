@@ -22,13 +22,13 @@ export class LoginComponent {
     }
 
   public signIn(credentials) {
-    this.authService.login(credentials)
-      .subscribe(result => {
-        if (result) {
-          this.router.navigate(['/']);
-        } else {
-          this.invalidLogin = true;
-        }
-      });
+      this.authService.login(credentials)
+        .subscribe(result => {
+          if (result) {
+            this.router.navigate(['/']);
+          } else {
+            this.invalidLogin = true;
+          }
+        });
   }
 }
