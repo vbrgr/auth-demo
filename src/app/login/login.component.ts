@@ -1,6 +1,7 @@
 import { AuthService } from './../services/auth.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TransferService } from '../services/transfer.service';
 
 @Component({
@@ -8,8 +9,10 @@ import { TransferService } from '../services/transfer.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  loginForm;
   invalidLogin: boolean;
+  submitted: boolean;
   data = this.transferService.getData();
   result;
   constructor(
@@ -20,7 +23,18 @@ export class LoginComponent {
         this.result = this.data;
       }
     }
+    ngOnInit() {
+      this.submitted = false;
+      this.loginForm = new FormGroup({
+          email : new FormControl('', [
+            Validators.required
+          ]),
+          password : new FormControl('', [
+            Validators.required
+          ])
+      });
 
+    }
   public signIn(credentials) {
       this.authService.login(credentials)
         .subscribe(result => {

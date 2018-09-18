@@ -13,7 +13,7 @@ router.put("/",function(req,res){
   var name = req.body.name;
   var cost = req.body.cost;
 
-  mongoClient.connect(url,function(err,client){
+  mongoClient.connect(uri,function(err,client){
     var collection = client.db("products").collection("products");
     client.close(collection.updateOne({"_id":mongojs.ObjectId(_id)},{"$set":{"id":id,"name":name,"cost":cost}}).then(result => {
       if(result) {

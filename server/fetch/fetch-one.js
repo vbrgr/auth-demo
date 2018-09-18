@@ -9,7 +9,7 @@ var uri = "mongodb+srv://vbrgr:gHy6Uh7Khjb01yJL@cluster0-j5bqr.mongodb.net/produ
 //creat rest API
 router.get("/:id", (req,res) => {
   var p_id = req.params.id
-  mongoClient.connect(url, (err, client)=> {
+  mongoClient.connect(uri, (err, client)=> {
     var collection =  client.db("products").collection("products");
     client.close(collection.find({_id : mongojs.ObjectId(p_id)}).toArray((err,data) => {
       res.send(data);

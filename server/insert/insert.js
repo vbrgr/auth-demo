@@ -11,7 +11,7 @@ router.post("/",function(req,res){
   var name = req.body.name;
   var cost = req.body.cost;
   var obj = {"id":id,"name":name,"cost":cost};
-  mongoClient.connect(url,function(err,client){
+  mongoClient.connect(uri,function(err,client){
     client.close(client.db("products").collection("products").insertOne(obj,function(errs,result) {
       if(errs) {
         res.send({"insertFail":"Adding product fail" + errs });

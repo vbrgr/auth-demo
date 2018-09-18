@@ -36,7 +36,7 @@ router.get("/:email/:password", (req,res) => {
 };
   var tim = new Date();
   tim.setDate(tim.getDate() + 7);
-  mongoClient.connect(url, (err, client)=> {
+  mongoClient.connect(uri, (err, client)=> {
     var collection =  client.db("products").collection("users");
     client.close(collection.findOneAndUpdate( {"email":email,"password":password}, { $set: {"islogin":true,"token":token}},function(errs,result) {
       if(errs){

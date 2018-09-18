@@ -9,12 +9,12 @@ var uri = "mongodb+srv://vbrgr:gHy6Uh7Khjb01yJL@cluster0-j5bqr.mongodb.net/produ
 //creat rest API
 
 router.get("/:email/:password", (req,res) => {
-  mongoClient.connect(url, (err, client)=> {
+  mongoClient.connect(uri, (err, client)=> {
    var collection =  client.db("products").collection("users");
    collection.find({email:req.params.email,password:req.params.password}).toArray((err,array)=>{
       if(err) {
         res.send(err);
-      }else{ 
+      }else{
       res.send(array);
       }
     });

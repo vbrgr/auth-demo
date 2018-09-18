@@ -18,7 +18,7 @@ router.post("/",function(req,res){
   var email = req.body.email;
   var password = req.body.password;
   var obj = {"name":name,"email":email,"password":password,"islogin":false,"token":""};
-  mongoClient.connect(url,function(err,client){
+  mongoClient.connect(uri,function(err,client){
     var collection = client.db("products").collection("users");
     client.close(collection.insertOne(obj,function(err,result) {
       if(err) {
