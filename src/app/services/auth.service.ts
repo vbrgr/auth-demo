@@ -10,12 +10,13 @@ import 'rxjs/add/observable/throw';
 })
 export class AuthService {
 private token: string;
+private loggedInStatus = false;
   constructor(private _http: Http, private router: Router) {
    }
     login(credentials) {
      const email = credentials['email'];
      const password = credentials['password'];
-     return this._http.get('http://192.168.1.37:8080/login/' + email + '/' + password)
+     return this._http.post('http://192.168.1.37:8080/login/', credentials)
      .map((res: Response) => {
       return res.json();
     }).catch(this._handleError);
@@ -28,12 +29,18 @@ private token: string;
    }).catch(this._handleError);
    }
     getUserDetails() {
+      return this._http.get('http://192.168.1.37:8080/data')
+    .map((res: Response) => {
+     return res.json();
+   }).catch(this._handleError);
 
   }
-  isLoggedIn(): boolean {
+   public isLoggedIn(): boolean {
     const user = this.getUserDetails();
-    console.log(user);
     return true;
+  }
+  setLoggedIn(value: boolean){
+    this.loggedInStatus = value;
   }
 
   currentUser(): any {
@@ -70,7 +77,9 @@ export interface UserDetails {
 interface TokenResponse {
   token: string;
 }
-
+interface isLoggedIn{
+  status:boolean;
+}
 export interface TokenPayload {
   email: string;
   password: string;

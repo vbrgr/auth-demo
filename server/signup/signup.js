@@ -3,7 +3,17 @@ var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
 var mongodb = require("mongodb");
 var router = express.Router();
-
+/**Mysql Connection /
+var mysql = require('mysql')
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'auth_demo'
+});
+connection.connect()
+/**Mysql Connection */
+/**Mongo Connection */
 var userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -18,7 +28,7 @@ router.post("/",function(req,res){
   var email = req.body.email;
   var password = req.body.password;
   var obj = {"name":name,"email":email,"password":password,"islogin":false,"token":""};
-  mongoClient.connect(uri,function(err,client){
+   mongoClient.connect(url,function(err,client){
     var collection = client.db("products").collection("users");
     client.close(collection.insertOne(obj,function(err,result) {
       if(err) {
@@ -29,5 +39,15 @@ router.post("/",function(req,res){
     })
   );
   });
+/**Mongo Connection */
+/**Mysql query */
+  /* connection.query("INSERT INTO users VALUES ('','"+name+"','"+email+"','"+password+"','')", function (err, result) {
+    if (err){
+      res.send({"signupFail":"Please try again" + err });
+    } else {
+      res.send({"signupSuccess":"SignUp success."});
+    }
+  }); */
+/**Mysql query */
 });
 module.exports = router;

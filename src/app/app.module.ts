@@ -36,7 +36,11 @@ const appRoutes: Routes = [
   { path: 'add-product', component: InsertProductComponent },
   { path: 'products', component: MongoComponent },
   { path: 'update/:id', component: UpdateComponent },
-  { path: 'admin', component: AdminComponent },
+  { 
+    path: 'admin', 
+    component: AdminComponent,
+    canActivate: [AuthGuardService]
+   },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LoginComponent },
   { path: 'users', component: UsersComponent },

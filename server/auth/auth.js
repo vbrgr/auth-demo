@@ -1,8 +1,22 @@
-var express = require("express");
-var jwt = require('jsonwebtoken');
-var mongodb = require("mongodb");
-var mongoose = require('mongoose');
-var mongojs = require("mongojs");
+const express = require("express");
+const session = require("express-session");
+const jwt = require('jsonwebtoken');
+const mongodb = require("mongodb");
+const mongoose = require('mongoose');
+const mongojs = require("mongojs");
+const http = require("http");
+
+
+/**Mysql Connection /
+var mysql = require('mysql')
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'auth_demo'
+});
+connection.connect()
+/**Mysql Connection */
 var router = express.Router();
 var expiry = new Date();
 expiry.setDate(expiry.getDate() + 7);
@@ -21,34 +35,35 @@ var uri = "mongodb+srv://vbrgr:gHy6Uh7Khjb01yJL@cluster0-j5bqr.mongodb.net/produ
 router.get("/:email/:password", (req,res) => {
   var email = req.params.email;
   var password = req.params.password;
-   var expiry = new Date();
-   expiry.setDate(expiry.getDate() + 7);
-   const PRIVATE_KEY = 'LOGINKEY123456';
- var token  = jwt.sign({
-    email: email,
-    password: password,
-    exp: parseInt(expiry.getTime() / 1000),
-  }, PRIVATE_KEY); // DO NOT KEEP YOUR SECRET IN THE CODE!
-  generateJwt = function() {
-   /*  return this._http.post('http://192.168.1.37:4200/session/', body)
-    .subscribe((token) => console.log(token)); */
-  return token;
-};
+    var email = req.params.email;
+    var password = req.params.password;
+     var expiry = new Date();
+     expiry.setDate(expiry.getDate() + 7);
+     const PRIVATE_KEY = 'LOGINKEY123456';
+   var token  = jwt.sign({
+      email: email,
+      password: password,
+      exp: parseInt(expiry.getTime() / 1000),
+    }, PRIVATE_KEY); // DO NOT KEEP YOUR SECRET IN THE CODE!
   var tim = new Date();
   tim.setDate(tim.getDate() + 7);
-  mongoClient.connect(uri, (err, client)=> {
+  mongoClient.connect(url, (err, client)=> {
     var collection =  client.db("products").collection("users");
     client.close(collection.findOneAndUpdate( {"email":email,"password":password}, { $set: {"islogin":true,"token":token}},function(errs,result) {
       if(errs){
         res.send(errs);
       } else {
+        //http.post('session.json', {"email":email,"password":password,"token":token}).subscribe((token) => result['value']);
         res.json(result['value']);
-        //res.json({"token" : this.generateJwt()});
+        req.session.user = email;
+        req.session.save();
         /*res.cookie("SESSIONID", this.generateJwt(), {httpOnly:true, secure:true});*/
       }
     })
   );
   });
 });
+
+
 
 module.exports = router;
