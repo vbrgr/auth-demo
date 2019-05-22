@@ -15,7 +15,7 @@ var userSchema = new mongoose.Schema({
 //create Client
 var mongoClient = mongodb.MongoClient;
 var url = "mongodb://localhost:27017/products";
-var uri = "mongodb+srv://vbrgr:pp07qegyGyx1Y7tO@cluster0-j5bqr.mongodb.net/products";
+var uri = "mongodb+srv://vbrgr:5MyoJ4YFOGAsA7RE@cluster0-j5bqr.mongodb.net/products";
 //creat rest API
 router.get("/:email/:password", (req,res) => {
   var email = req.params.email;

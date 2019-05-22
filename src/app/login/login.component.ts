@@ -38,8 +38,9 @@ export class LoginComponent implements OnInit {
   public signIn(credentials) {
       this.authService.login(credentials)
         .subscribe(result => {
-          if (result) {
-            this.router.navigate(['/']);
+          if (result.success) {
+            this.router.navigate(['admin']);
+            this.authService.setLoggedIn(true);
           } else {
             this.invalidLogin = true;
           }

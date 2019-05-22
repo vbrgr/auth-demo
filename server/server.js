@@ -1,9 +1,18 @@
 var express = require("express");
 var bodyparser = require("body-parser");
+const jwt = require('jsonwebtoken');
 var app = express();
-
+const session = require("express-session");
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false}));
+
+const mongoose = require('mongoose');
+const mongodb = require("mongodb");
+mongoose.Promise = Promise
+var mongoClient = mongodb.MongoClient;
+mongoClient.connect("mongodb://localhost:27017/products");
+
+const User = require('../models/user');
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -12,8 +21,33 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(session({
+  secret: 'authdemosecret',
+  saveUninitialized: false,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
+ app.post("/login", (req,res) => {
+   const email = req.body.email;
+   const password = req.body.password;
+   const resp =   User.findOne({email,password});
+   if(!resp){
+     // user login is incorrect
+     res.json({
+       success : false,
+       message :"incorrect email/password"
+     });
+   }else{
+     // make session
+     req.session.email = email;
+     res.json({
+       success : true,
 
+     });
+   }
 
+ });
 
 var fetch = require("./fetch/fetch");
 app.use("/fetch", fetch);
@@ -25,9 +59,12 @@ var update = require("./update/update");
 app.use("/update", update);
 var remove = require("./delete/delete");
 app.use("/delete", remove);
-var auth = require("./auth/auth");
+/* var auth = require("./auth/auth");
 app.use("/auth", auth);
-app.use("/login", auth);
+
+
+app.use("/login", auth); */
+
 var signup = require("./signup/signup");
 app.use("/signup", signup);
 
