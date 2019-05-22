@@ -16,7 +16,7 @@ export class FetchOneService {
   }
   public getOneProduct(obj: any): any {
     const option = {params: {id : obj}};
-    return this._http.get('http://192.168.1.37:8080/fetch-one/' + obj)
+    return this._http.get('http://localhost:8080/fetch-one/' + obj)
     .map((res: Response) => {
       return res.json();
     }).catch(this._handleError);

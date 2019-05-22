@@ -15,8 +15,7 @@ var userSchema = new mongoose.Schema({
 //create Client
 var mongoClient = mongodb.MongoClient;
 var url = "mongodb://localhost:27017/products";
-var uri = "mongodb+srv://vbrgr:gHy6Uh7Khjb01yJL@cluster0-j5bqr.mongodb.net/products";
-
+var uri = "mongodb+srv://vbrgr:pp07qegyGyx1Y7tO@cluster0-j5bqr.mongodb.net/products";
 //creat rest API
 router.get("/:email/:password", (req,res) => {
   var email = req.params.email;
@@ -36,7 +35,7 @@ router.get("/:email/:password", (req,res) => {
 };
   var tim = new Date();
   tim.setDate(tim.getDate() + 7);
-  mongoClient.connect(uri, (err, client)=> {
+  mongoClient.connect(url, (err, client)=> {
     var collection =  client.db("products").collection("users");
     client.close(collection.findOneAndUpdate( {"email":email,"password":password}, { $set: {"islogin":true,"token":token}},function(errs,result) {
       if(errs){

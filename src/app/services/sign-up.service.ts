@@ -13,7 +13,7 @@ export class SignUpService {
 
   constructor(private _http: Http) { }
   public signUpForm(obj: any): any {
-    return this._http.post('http://192.168.1.37:8080/signup/', obj)
+    return this._http.post('http://localhost:8080/signup/', obj)
     .map((res: Response) => {
      return res.json();
    }).catch(this._handleError);

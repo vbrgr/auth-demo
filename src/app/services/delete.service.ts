@@ -13,7 +13,7 @@ export class DeleteService {
   constructor(private _http: Http) { }
   public deleteProduct(obj) {
     const data = {params : {id : obj}};
-    return this._http.delete('http://192.168.1.37:8080/delete/' + obj)
+    return this._http.delete('http://localhost:8080/delete/' + obj)
     .map((res: Response) => {
       return res.json();
     }).catch(this._handleError);

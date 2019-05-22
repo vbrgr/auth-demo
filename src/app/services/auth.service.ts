@@ -15,14 +15,14 @@ private token: string;
     login(credentials) {
      const email = credentials['email'];
      const password = credentials['password'];
-     return this._http.get('http://192.168.1.37:8080/login/' + email + '/' + password)
+     return this._http.get('http://localhost:8080/login/' + email + '/' + password)
      .map((res: Response) => {
       return res.json();
     }).catch(this._handleError);
   }
 
     signUp(formfeilds: any): any {
-    return this._http.post('http://192.168.1.37:8080/signup/', formfeilds)
+    return this._http.post('http://localhost:8080/signup/', formfeilds)
     .map((res: Response) => {
      return res.json();
    }).catch(this._handleError);
