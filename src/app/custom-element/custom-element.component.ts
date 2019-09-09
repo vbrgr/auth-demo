@@ -12,7 +12,7 @@ export class CustomElementComponent implements OnInit {
   constructor(private injector: Injector, domsanitizer: DomSanitizer) {
     const MyElem = createCustomElement(AlertComponent, {injector: this.injector});
     customElements.define('my-elem', MyElem);
-    this.content = domsanitizer.bypassSecurityTrustHtml('<my-elem name="said"></my-elem>');
+    this.content = domsanitizer.bypassSecurityTrustHtml('<my-elem name="said">test</my-elem>');
    }
 
   ngOnInit() {
