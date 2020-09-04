@@ -39,7 +39,7 @@
     "express-session": "^1.15.6",
     "firebase": "^5.3.1",
     "jsonwebtoken": "^8.3.0",
-    "mongodb": "^2.2.36",
+    "mongodb": "^3.1.13",
     "mongodb-stitch-browser-sdk": "^4.0.13",
     "mongojs": "^2.6.0",
     "mongoose": "^5.2.9",
